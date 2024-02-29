@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8e8a5;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #e8a5a5;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #e8a5a5;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    color: #a5a5e8;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #cf6acf;
+    margin-right: 20px;
+    background-color: #cfcf6a;
+}
+
+.navigation a:hover {
+    color: #ff4136;
+}
+
+.luigi {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.luigi img {
+    max-width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+.header {
+    text-align: center;
+    padding: 10px;
+    background-color: #e8a5a5;
+    color: #a5a5e8;
+}
+.navigation {
+    margin: 15px 0;
+    text-align: center;
+    background-color: #cfcf6a;
+}
+
+.content {
+    margin: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #e8a5a5;
+}
+
+table img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+.media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.naples img {
+    display: block;
+    margin: 0 auto;
+}
+
+.naples img {
+    border: 1px solid #e8a5a5;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.naples img:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.naples figcaption {
+    font-style: italic;
+    text-align: center;
+    color: #e8a5a5;
+}
+
+.FAQ ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.FAQ li {
+    margin-bottom: 10px;
+}
+
+.Contact {
+    font-family: Arial, sans-serif;
+    background-color: #e8e8a5;
+    margin: 0;
+    padding: 0;
+}
