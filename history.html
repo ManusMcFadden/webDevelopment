@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <title>Luigi's Pizzeria</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+            <a class="navbar-brand" href="#">Luigi's Pizzeria</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="mainPage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="history.html">Our Background</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactFAQ.html">Contact us and FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="location.html">Location finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Find your pizza</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <div class="heading">
-            <h1>A little bit about our past:</h1>
+            <h1>Our history:</h1>
         </div>
-        <div class="navigation">
-            <a href="mainPage.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contactFAQ.html">Contact us and FAQs</a>
-        </div>
+        
         <div class="content">
             <p>Nestled in the heart of Leeds, Luigi's Pizzeria stands as a testament to the timeless tradition of Neapolitan pizza. Our story began in the early 2000s when Luigi Romano, a passionate pizzaiolo from Naples, decided to bring the authentic taste of his homeland to the bustling streets of Leeds.</p>
             <p>Luigi's journey was fueled by the desire to share the joy of simple, yet exquisite, Italian cuisine. He envisioned a place where the warmth of Italian hospitality met the vibrancy of Leeds' culinary scene. With a stone oven imported from the outskirts of Naples and a recipe passed down through generations, Luigi's Pizzeria opened its doors, promising an experience that would transport diners straight to the sun-drenched terraces of Italy.</p>
@@ -23,8 +50,10 @@
             <p>Benvenuti a Luigi's Pizzeria - where history, flavor, and community meet.</p>
         </div>
         <div class="naples">
-            <img src="Naples.jpg">
+            <img src="Naples.jpg" class="rounded">
             <figcaption>Luigi's hometown of Naples</figcaption>
         </div>
     </body>
 </html>
+
+

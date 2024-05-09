@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Luigi's Pizzeria</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var form = $("#pizzaQuiz");
+            var questions = $(".question");
+            var currentQuestion = 0;
+
+            showQuestion(currentQuestion);
+
+            $(".next").click(function (event) {
+                event.preventDefault();
+                if ($(this).siblings("input[type='radio']:checked").length > 0) {
+                    currentQuestion++;
+                    if (currentQuestion < questions.length) {
+                        showQuestion(currentQuestion);
+                    } else {
+                        showResult();
+                    }
+                } else {
+                    alert("Please select an option before proceeding.");
+                }
+            });
+
+            $(".skip").click(function (event) {
+                event.preventDefault();
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion(currentQuestion);
+                } else {
+                    showResult();
+                }
+            });
+
+            function showQuestion(questionIndex) {
+                questions.hide();
+                questions.eq(questionIndex).show();
+            }
+
+            function showResult() {
+                var q1 = $("input[name='q1']:checked").val();
+                var q2 = $("input[name='q2']:checked").val();
+                var q3 = $("input[name='q3']:checked").val();
+                var q4 = $("input[name='q4']:checked").val();
+                var q5 = $("input[name='q5']:checked").val();
+                var q6 = $("input[name='q6']:checked").val();
+                var q7 = $("input[name='q7']:checked").val();
+                var q8 = $("input[name='q8']:checked").val();
+                var q9 = $("input[name='q9']:checked").val();
+                var q10 = $("input[name='q10']:checked").val();
+                var pizza = determinePizza(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
+                $("#result").html("<h2>Your favourite pizza might be " + pizza + "!</h2>");
+            }
+
+            function determinePizza(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) {
+                if (q1 === "sweet" && q2 === "no" && q3 === "no" && q4 === "yes" && q5 === "no" && q6 === "thin" && q7 === "yes" && q8 === "no" && q9 === "no" && q10 === "no") {
+                    return "Hawaiian";
+                } else if (q1 === "savoury" && q2 === "yes" && q3 === "yes" && q4 === "no" && q5 === "yes" && q6 === "thick" && q7 === "no" && q8 === "yes" && q9 === "yes" && q10 === "yes") {
+                    return "Pepperoni";
+                } else if (q1 === "savoury" && q2 === "no" && q3 === "no" && q4 === "yes" && q5 === "no" && q6 === "thin" && q7 === "yes" && q8 === "yes" && q9 === "no" && q10 === "no") {
+                    return "Vegetarian";
+                } else if (q1 === "sweet" && q2 === "no" && q3 === "yes" && q4 === "no" && q5 === "yes" && q6 === "thick" && q7 === "no" && q8 === "no" && q9 === "yes" && q10 === "yes") {
+                    return "Chicken and Sweetcorn";
+                } else if (q1 === "savoury" && q2 === "yes" && q3 === "yes" && q4 === "yes" && q5 === "no" && q6 === "thick" && q7 === "yes" && q8 === "no" && q9 === "yes" && q10 === "no") {
+                    return "Meaty";
+                } else if (q1 === "savoury" && q2 === "yes" && q3 === "yes" && q4 === "no" && q5 === "yes" && q6 === "thin" && q7 === "no" && q8 === "yes" && q9 === "no" && q10 === "yes") {
+                    return "Barbeque";
+                } else if (q1 === "savoury" && q2 === "yes" && q3 === "no" && q4 === "yes" && q5 === "no" && q6 === "thick" && q7 === "yes" && q8 === "no" && q9 === "yes" && q10 === "yes") {
+                    return "Spicy";
+                } else {
+                    return "Margherita";
+                }
+            }
+        });
+    </script>
+</head>
+<body class="text-center">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <a class="navbar-brand" href="#">Luigi's Pizzeria</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="mainPage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="history.html">Our Background</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactFAQ.html">Contact us and FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="location.html">Location finder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quiz.html">Find your pizza</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <form id="pizzaQuiz">
+        <h1>Discover Your Favourite Pizza!</h1>
+        <div class="question active">
+            <p>1. Do you prefer sweet or savoury flavours?</p>
+            <input type="radio" name="q1" value="sweet"> Sweet<br>
+            <input type="radio" name="q1" value="savoury"> Savoury<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>2. Do you like spicy food?</p>
+            <input type="radio" name="q2" value="yes"> Yes<br>
+            <input type="radio" name="q2" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>3. Do you enjoy meat toppings?</p>
+            <input type="radio" name="q3" value="yes"> Yes<br>
+            <input type="radio" name="q3" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>4. Do you like your pizza with a lot of cheese?</p>
+            <input type="radio" name="q4" value="yes"> Yes<br>
+            <input type="radio" name="q4" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>5. Do you enjoy exotic toppings on your pizza?</p>
+            <input type="radio" name="q5" value="yes"> Yes<br>
+            <input type="radio" name="q5" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>6. Do you prefer thin or thick crust?</p>
+            <input type="radio" name="q6" value="thin"> Thin<br>
+            <input type="radio" name="q6" value="thick"> Thick<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>7. Do you like your pizza with a lot of sauce?</p>
+            <input type="radio" name="q7" value="yes"> Yes<br>
+            <input type="radio" name="q7" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>8. Do you enjoy vegetables on your pizza?</p>
+            <input type="radio" name="q8" value="yes"> Yes<br>
+            <input type="radio" name="q8" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>9. Do you like your pizza with a lot of toppings?</p>
+            <input type="radio" name="q9" value="yes"> Yes<br>
+            <input type="radio" name="q9" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+        <div class="question">
+            <p>10. Do you enjoy a tangy flavor in your pizza?</p>
+            <input type="radio" name="q10" value="yes"> Yes<br>
+            <input type="radio" name="q10" value="no"> No<br>
+            <button class="next">Next</button>
+            <button class="skip">Skip</button>
+        </div>
+    </form>
+
+
+    <div id="result"></div>
+
+    
+</body>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Luigi's Pizzeria</title>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <a class="navbar-brand" href="#">Luigi's Pizzeria</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="mainPage.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="menu.html">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="history.html">Our Background</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contactFAQ.html">Contact us and FAQs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="location.html">Location finder</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="quiz.html">Find your pizza</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<p>Click the button and click allow to let us use your location and find the nearest Luigi's to you:</p>
+
+<button onclick="getLocation()">Find Nearest Restaurant</button>
+<div style="height: 450;" id="map"></div>
+
+<p id="finder"></p>
+
+<script>
+var x = document.getElementById("finder");
+
+var restaurants = [
+  {name: "London", lat: 51.50722222, lon: 0.12750000},
+  {name: "Birmingham", lat: 52.47916667, lon: 1.90277778},
+  {name: "Manchester", lat: 53.47888889, lon: 2.24527778},
+  {name: "Liverpool", lat: 53.40944444, lon: 2.97861111},
+  {name: "Leeds", lat: 53.80083333, lon: -1.54916667},
+];
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
+  
+  var nearest = restaurants.reduce((prev, curr) => {
+    var d1 = distance(lat, prev.lat, lon, prev.lon);
+    var d2 = distance(lat, curr.lat, lon, curr.lon);
+    return (d1 < d2) ? prev : curr;
+  });
+
+  x.innerHTML = "Nearest Luigi's Pizzeria restaurant is: " + nearest.name;
+  showMap(nearest.lat, nearest.lon)
+
+}
+
+function distance(x1, x2, y1, y2) {
+  var changeInX = x1 - x2;
+  var changeInY = y1 - y2;
+  return Math.sqrt(changeInX*changeInX + changeInY*changeInY);
+}
+
+function showMap(lat, lon) {
+  var location = lat + "," + lon;
+  var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + location + "&zoom=14&size=600x450";
+  document.getElementById("map").innerHTML = "<img src='" + img_url + "' alt='Map of the closest Luigis.'>";
+}
+  </script>
+
+</body>
+</html>
+
+
+
+
